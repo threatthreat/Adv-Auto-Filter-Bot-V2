@@ -14,7 +14,7 @@ class Bot(Client):
 
     def __init__(self):
         super().__init__(
-    session_string="YOUR_GENERATED_SESSION_STRING",
+    session_string="BQD-9WAAjJiCaAYI-MF7tp42DWqwjXC_A16fA2AhPUwbFj259Y82VuiVuDlECInPHpfkM9IYEAc0tBAIUmcClbnf6FFg7KzjahrOrrsKr__JRaSUXh-Ww43bDCzCa8UmnfemLnPiPg50d8vydakYJ7GMdxRjWkIyL4nq2NTe3O3UP3fcJ-GSYv2FWNKplsvBf56bv1otjsomKx-2ClhhYzJZITUzVa8NpSukBwQNjpG9AQpXRESIMorqjHbtCjAhAPLSWcZDBDJXu3hn0_rVEMKF7EYZYtDi2UfDJPZhJXFk1vvJn6OfgAqG2EFIxc5978D7lYJsEOohWqc8qrKSnCRRuoQzSwAAAAFGz15EAA",
     api_hash=API_HASH,
     api_id=APP_ID,
     plugins={"root": "bot/plugins"},
