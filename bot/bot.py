@@ -3,24 +3,24 @@
 # (c) @SpEcHIDe
 
 from pyrogram import Client, enums, __version__
-
 from . import API_HASH, APP_ID, LOGGER, BOT_TOKEN 
-
 from .user import User
 
 class Bot(Client):
     USER: User = None
     USER_ID: int = None
 
-   super().__init__(
-    name="file to link",  # Add a name argument
-    session_string="BQD-9WAAjJiCaAYI-MF7tp42DWqwjXC_A16fA2AhPUwbFj259Y82VuiVuDlECInPHpfkM9IYEAc0tBAIUmcClbnf6FFg7KzjahrOrrsKr__JRaSUXh-Ww43bDCzCa8UmnfemLnPiPg50d8vydakYJ7GMdxRjWkIyL4nq2NTe3O3UP3fcJ-GSYv2FWNKplsvBf56bv1otjsomKx-2ClhhYzJZITUzVa8NpSukBwQNjpG9AQpXRESIMorqjHbtCjAhAPLSWcZDBDJXu3hn0_rVEMKF7EYZYtDi2UfDJPZhJXFk1vvJn6OfgAqG2EFIxc5978D7lYJsEOohWqc8qrKSnCRRuoQzSwAAAAFGz15EAA",
-    api_hash=API_HASH,
-    api_id=APP_ID,
-    plugins={"root": "bot/plugins"},
-    workers=200,
-    sleep_threshold=10
+    def __init__(self):
+        super().__init__(
+            name="file_to_link",  # Corrected variable name
+            session_string="BQD-9WAAjJiCaAYI-MF7tp42DWqwjXC_A16fA2AhPUwbFj259Y82VuiVuDlECInPHpfkM9IYEAc0tBAIUmcClbnf6FFg7KzjahrOrrsKr__JRaSUXh-Ww43bDCzCa8UmnfemLnPiPg50d8vydakYJ7GMdxRjWkIyL4nq2NTe3O3UP3fcJ-GSYv2FWNKplsvBf56bv1otjsomKx-2ClhhYzJZITUzVa8NpSukBwQNjpG9AQpXRESIMorqjHbtCjAhAPLSWcZDBDJXu3hn0_rVEMKF7EYZYtDi2UfDJPZhJXFk1vvJn6OfgAqG2EFIxc5978D7lYJsEOohWqc8qrKSnCRRuoQzSwAAAAFGz15EAA",
+            api_hash=API_HASH,
+            api_id=APP_ID,
+            plugins={"root": "bot/plugins"},
+            workers=200,
+            sleep_threshold=10
 )
+
 
         self.LOGGER = LOGGER
 
