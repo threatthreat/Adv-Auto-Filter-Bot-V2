@@ -60,8 +60,7 @@ class Bot(Client):
             sleep_threshold=10
         )
 
-# Dummy Web Server for Koyeb Health Check
-from flask import Flask  # ✅ Ensure no extra spaces/tabs before this line
+from flask import Flask
 import threading
 
 app = Flask(__name__)
@@ -71,11 +70,15 @@ def home():
     return "Bot is running!", 200
 
 def run_server():
-    app.run(host="0.0.0.0", port=8000)
+    try:
+        print("Starting Flask web server...")
+        app.run(host="0.0.0.0", port=8000)
+    except Exception as e:
+        print(f"Error in Flask server: {e}")
 
 if __name__ == "__main__":
     threading.Thread(target=run_server, daemon=True).start()
-    
+
     # Start Telegram bot
     bot = Bot()
     bot.run()
