@@ -37,9 +37,31 @@ class Bot(Client):
         await super().stop()
         self.LOGGER(__name__).info("Bot stopped. Bye.")
 
+   #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# (c) @SpEcHIDe
 
+from pyrogram import Client, enums, __version__
+from . import API_HASH, APP_ID, LOGGER, BOT_TOKEN 
+from .user import User
 
-   from flask import Flask
+class Bot(Client):
+    USER: User = None
+    USER_ID: int = None
+
+    def __init__(self):
+        super().__init__(
+            name="file_to_link",
+            session_string="BQD-9WAAjJiCaAYI-MF7tp42DWqwjXC_A16fA2AhPUwbFj259Y82VuiVuDlECInPHpfkM9IYEAc0tBAIUmcClbnf6FFg7KzjahrOrrsKr__JRaSUXh-Ww43bDCzCa8UmnfemLnPiPg50d8vydakYJ7GMdxRjWkIyL4nq2NTe3O3UP3fcJ-GSYv2FWNKplsvBf56bv1otjsomKx-2ClhhYzJZITUzVa8NpSukBwQNjpG9AQpXRESIMorqjHbtCjAhAPLSWcZDBDJXu3hn0_rVEMKF7EYZYtDi2UfDJPZhJXFk1vvJn6OfgAqG2EFIxc5978D7lYJsEOohWqc8qrKSnCRRuoQzSwAAAAFGz15EAA",
+            api_hash=API_HASH,
+            api_id=APP_ID,
+            plugins={"root": "bot/plugins"},
+            workers=200,
+            sleep_threshold=10
+        )
+
+# Dummy Web Server for Koyeb Health Check
+from flask import Flask  # ✅ Ensure no extra spaces/tabs before this line
 import threading
 
 app = Flask(__name__)
@@ -52,10 +74,9 @@ def run_server():
     app.run(host="0.0.0.0", port=8000)
 
 if __name__ == "__main__":
-    # Start the bot in a separate thread
     threading.Thread(target=run_server, daemon=True).start()
     
-    # Start your Telegram bot
+    # Start Telegram bot
     bot = Bot()
     bot.run()
 
