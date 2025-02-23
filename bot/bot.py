@@ -60,6 +60,7 @@ class Bot(Client):
             sleep_threshold=10
         )
 
+import os
 from flask import Flask
 import threading
 
@@ -67,14 +68,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Bot is running!", 200
+    return "OK", 200  # ✅ Ensures Koyeb health check passes
 
 def run_server():
-    try:
-        print("Starting Flask web server...")
-        app.run(host="0.0.0.0", port=8000)
-    except Exception as e:
-        print(f"Error in Flask server: {e}")
+    port = int(os.getenv("PORT", 8080))  # Read PORT from env
+    print(f"Starting Flask server on port {port}...")
+    app.run(host="0.0.0.0", port=port)
 
 if __name__ == "__main__":
     threading.Thread(target=run_server, daemon=True).start()
@@ -82,4 +81,5 @@ if __name__ == "__main__":
     # Start Telegram bot
     bot = Bot()
     bot.run()
+
 
