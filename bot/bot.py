@@ -36,3 +36,26 @@ class Bot(Client):
     async def stop(self, *args):
         await super().stop()
         self.LOGGER(__name__).info("Bot stopped. Bye.")
+
+
+
+   from flask import Flask
+import threading
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot is running!", 200
+
+def run_server():
+    app.run(host="0.0.0.0", port=8000)
+
+if __name__ == "__main__":
+    # Start the bot in a separate thread
+    threading.Thread(target=run_server, daemon=True).start()
+    
+    # Start your Telegram bot
+    bot = Bot()
+    bot.run()
+
